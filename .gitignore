@@ -1,0 +1,5 @@
+.env
+data/processed/
+data/failed/
+backup/
+__pycache__/
