@@ -33,27 +33,7 @@ connectivity ticket.
 
 ---
 
-## 2. Deployment fails: schema file not found
-
-**Symptom** - `Get-Content sql\01_schema.sql` returned
-`Cannot find path ... because it does not exist`.
-
-**Diagnosis** - `Get-ChildItem -Recurse` showed all 17 files present but flat in
-the root directory instead of in `sql\`, `ingest\`, `scripts\` and `runbook\`.
-
-**Fix** - recreated the directories and moved the files into place.
-
-**Why layout matters** - `docker-compose.yml` declares `build: ./ingest`, so
-Docker expects `ingest/Dockerfile` and treats that folder as the entire build
-context. The Dockerfile's `COPY requirements.txt .` is relative to it. Layout is
-referenced by the config, not cosmetic.
-
-**Takeaway** - verify artifacts are present before starting a deployment, not
-during one. A missing file is one of the most common rollout failures.
-
----
-
-## 3. Cannot set container memory or CPU limits
+## 2. Cannot set container memory or CPU limits
 
 **Symptom** - no memory or CPU sliders in Docker Desktop settings.
 
@@ -72,7 +52,7 @@ then `wsl --shutdown` and restarted Docker Desktop. Verified with
 
 ---
 
-## 4. docker command not found inside the Ubuntu WSL distro
+## 3. docker command not found inside the Ubuntu WSL distro
 
 **Symptom** - `docker version` works in PowerShell, fails inside Ubuntu with
 "The command 'docker' could not be found in this WSL 2 distro."

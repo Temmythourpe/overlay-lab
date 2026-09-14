@@ -1,14 +1,6 @@
 # Lab exercises
 
-Work through these in order. Roughly 8 hours total, comfortably split across
-four evenings. **Do not skip Part 4** - the broken states are the part that
-actually teaches you something, and they are the part worth talking about.
-
-Keep notes as you go. `runbook/RUNBOOK.md` is where they belong.
-
----
-
-## Part 0 - Setup (20 min)
+## Part 0 - Setup
 
 Install Docker Desktop (Windows/macOS) or Docker Engine (Linux). Then:
 
@@ -25,7 +17,7 @@ docker compose version
 
 ---
 
-## Part 1 - Install the stack (45 min)
+## Part 1 - Install the stack
 
 This is the "installation at the customer's site" step from the job posting.
 
@@ -61,7 +53,7 @@ Get-Content sql\01_schema.sql | docker exec -i overlay-sql `
 
 ---
 
-## Part 2 - Get data flowing (1 hour)
+## Part 2 - Get data flowing
 
 ```bash
 python3 scripts/generate_data.py
@@ -105,7 +97,7 @@ scanner correction waiting to happen.
 
 ---
 
-## Part 3 - The administration basics (2 hours)
+## Part 3 - The administration basics
 
 This is the SQL Server admin knowledge the job asks for. Do each one.
 
@@ -151,7 +143,7 @@ familiar ground - the only new part is `docker exec` and `sqlcmd`.
 
 ---
 
-## Part 4 - Break it on purpose (2 hours) **[the important part]**
+## Part 4 - Break it on purpose
 
 For each scenario: break it, observe the symptom, diagnose it using only logs
 and the health check, fix it, then write it up in `runbook/RUNBOOK.md`.
@@ -206,7 +198,7 @@ disk. This is one of the most common real SQL Server support calls.
 
 ---
 
-## Part 5 - Roll out a patch (1 hour)
+## Part 5 - Roll out a patch
 
 The job says: *supporting the rollout of new software releases, including
 hotfixes and patches*. So practise it.
@@ -225,7 +217,7 @@ work artifact - put it in the runbook.
 
 ---
 
-## Part 6 - Optional: Kubernetes (2 hours)
+## Part 6 - Optional: Kubernetes
 
 Only if Parts 1-5 are done. Install **k3s** on a Linux VM, or enable Kubernetes
 in Docker Desktop, then deploy SQL Server as a StatefulSet with a
@@ -239,12 +231,3 @@ because the PVC survived the pod."* Then practise the diagnostic loop:
 Deliberately set an image tag that does not exist and identify
 `ImagePullBackOff`. Deliberately set `memory: 100Mi` and identify `OOMKilled`.
 
----
-
-## When you are done
-
-- Every scenario in Part 4 written up in `runbook/RUNBOOK.md`
-- `README.md` updated with anything you changed
-- Pushed to GitHub, with the repo link in your CV header
-- You can explain **every line** of `ingest.py`, `healthcheck.ps1` and
-  `docker-compose.yml` without notes
