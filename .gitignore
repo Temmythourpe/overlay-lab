@@ -1,4 +1,4 @@
-.env
+*.env
 data/processed/
 data/failed/
 backup/
