@@ -182,7 +182,6 @@ def load_file(path):
             pass
         record_ingest(file_name, rows_read, 0, "FAILED", str(exc))
         log(f"FAIL  {file_name}: {exc}")
-<
 
 def main():
     log(f"ingest service starting; watching {DATA_DIR} every {POLL_SECONDS}s")

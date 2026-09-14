@@ -19,8 +19,6 @@ docker compose version
 
 ## Part 1 - Install the stack
 
-This is the "installation at the customer's site" step from the job posting.
-
 ```bash
 ./scripts/deploy.sh
 ```
